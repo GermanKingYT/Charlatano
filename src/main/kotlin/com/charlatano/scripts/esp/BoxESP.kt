@@ -1,25 +1,26 @@
 /*
- *     Charlatano: Free and open-source (FOSS) cheat for CS:GO/CS:CO
- *     Copyright (C) 2017 - Thomas G. P. Nappo, Jonathan Beaudoin
+ * Charlatano: Free and open-source (FOSS) cheat for CS:GO/CS:CO
+ * Copyright (C) 2017 - Thomas G. P. Nappo, Jonathan Beaudoin
  *
- *     This program is free software: you can redistribute it and/or modify
- *     it under the terms of the GNU Affero General Public License as published by
- *     the Free Software Foundation, either version 3 of the License, or
- *     (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *     This program is distributed in the hope that it will be useful,
- *     but WITHOUT ANY WARRANTY; without even the implied warranty of
- *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *     GNU Affero General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *     You should have received a copy of the GNU Affero General Public License
- *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package com.charlatano.scripts.esp
 
 import com.badlogic.gdx.graphics.Color
 import com.charlatano.game.entities
+import com.charlatano.game.forEntities
 import com.charlatano.game.entity.*
 import com.charlatano.game.entityByType
 import com.charlatano.game.me
@@ -41,9 +42,9 @@ private var currentIdx = 0
 internal fun boxEsp() = CharlatanoOverlay {
 	if (!BOX_ESP) return@CharlatanoOverlay
 	
-	entities(EntityType.CCSPlayer) {
+	forEntities(EntityType.CCSPlayer) {
 		val entity = it.entity
-		if (entity == me || entity.dead() || entity.dormant()) return@entities
+		if (entity == me || entity.dead() || entity.dormant()) return@forEntities
 		
 		vHead.set(entity.bone(0xC), entity.bone(0x1C), entity.bone(0x2C) + 9)
 		vFeet.set(vHead.x, vHead.y, vHead.z - 75)
